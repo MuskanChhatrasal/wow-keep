@@ -7,7 +7,7 @@ const Sidebar = () => {
   const [labelType, setLabelType] = useState(false)
 
   return (
-    <nav className="sidebar">
+    <nav className="sidebar" style={{marginTop: '3rem'}}>
         
         <div>
             <div className="list-topic side-tags">
