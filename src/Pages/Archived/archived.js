@@ -4,8 +4,9 @@ import './archived.css'
 
 const Archived = () => {
   return (
-    <div>
+    <div className='archived-container'>
         <Sidebar />
+        <h1>Archive</h1>
     </div>
   )
 }

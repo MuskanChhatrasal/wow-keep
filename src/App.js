@@ -7,6 +7,8 @@ import Signup from "./Pages/Authentication/signup";
 import Home from "./Pages/Home/home";
 import Archived from "./Pages/Archived/archived";
 import Labels from "./Pages/Labels/labels";
+import Trash from "./Pages/Trash/trash";
+import Mockman from "mockman-js";
 
 
 function App() {
@@ -17,9 +19,11 @@ function App() {
        <Route path="/" element={<Dashboard />} />
        <Route path="/login" element={<Login />} />
        <Route path="/signup" element={<Signup />} />
-       <Route path='/notes' element={<Home />}></Route>
+       <Route path='/notes' element={<Home />} />
        <Route path='/archived' element={<Archived />} />
-       <Route path='/labels' element={<Labels />}></Route>
+       <Route path='/labels' element={<Labels />} />
+       <Route path="/trash" element={<Trash />} />
+       <Route path="/mockman" element={<Mockman />} />
     </Routes>
     </>
   );

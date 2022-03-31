@@ -53,6 +53,12 @@ const Sidebar = () => {
                 <Link to='/archived'><i class="fas fa-archive" style={{marginRight: '0.75rem'}}></i><span>ARCHIVES</span></Link>
             </div>
         </div>
+
+        <div>
+            <div className="list-topic side-tags">
+                <Link to='/trash'><i class="fas fa-trash" style={{marginRight: '0.75rem'}}></i><span>TRASH</span></Link>
+            </div>
+        </div>
         
     </nav>
   )

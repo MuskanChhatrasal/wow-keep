@@ -4,8 +4,9 @@ import './labels.css'
 
 const Labels = () => {
   return (
-    <div>
+    <div className='label-container'>
         <Sidebar />
+        <h1>Label</h1>
     </div>
   )
 }

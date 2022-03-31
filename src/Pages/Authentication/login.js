@@ -6,14 +6,14 @@ const Login = () => {
   return (
      <div className="wrapper login-wrapper" style={{marginLeft: '30rem'}}>
         <h2 style={{fontSize: '2rem'}}>Login</h2>
-        <form>
+        <form onSubmit={(e)=>{e.preventDefault()}}>
             <div className="input-box">
                 <input type="text" placeholder="Enter your email" required />
             </div>
             <div className="input-box">
                 <input type="password" placeholder="Create password" required />
             </div>
-            <div className="input-box button">
+            <div className="input-box">
                 <input type="Submit" value="Login Now" />
             </div>
             <div className="text">
