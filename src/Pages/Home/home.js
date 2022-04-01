@@ -2,6 +2,7 @@ import React from 'react'
 import './home.css'
 import { Link } from 'react-router-dom'
 import Sidebar from '../../Components/Sidebar/sidebar'
+import { ColorPalette } from '../../Components/ColorPalette/colorPalette'
 
 const Home = () => {
   return (
@@ -63,6 +64,7 @@ const Home = () => {
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
           </select>
+          <ColorPalette />
         </div>
         <button
           className='add-btn'
