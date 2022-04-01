@@ -19,8 +19,8 @@ const initialAuthData = {
 
 const authReducer = (state, { type, payload }) => {
 	switch (type) {
-		case "LOGIN SUCCESS":
-			return { ...state, toastData: { display: true, data: payload.toastMessage, status: "success" }, signedIn: true, userName: payload.name, userEmail: payload.email, userID: payload.id }
+		case "LOGIN_SUCCESS":
+			return { ...state, toastData: { display: true, data: payload.toastMessage, status: "success" }, signedIn: true, userName: payload.name, userEmail: payload.email, userID: payload.userID }
 		case "LOGIN_ERROR":
 			return { ...state, toastData: { display: true, data: payload.toastMessage, status: "alert" } }
 
@@ -31,7 +31,7 @@ const authReducer = (state, { type, payload }) => {
 			return { ...state, toastData: { ...state.toastData, display: false } }
 
 		case "LOGOUT":
-			return { ...state, toastData: { display: true, data: payload.toastMessage, status: "alert" }, signedIn: false, userName: payload.name, userEmail: payload.email, userID: payload.id }
+			return { ...state, toastData: { display: true, data: payload.toastMessage, status: "alert" }, signedIn: false, userName: payload.name, userEmail: payload.email, userID: payload.userID }
 		default:
 			return { ...state }
 	}
@@ -44,7 +44,7 @@ const AuthProvider = ({children}) =>{
     const [authState, authDispatch] = useReducer(authReducer, initialAuthData)
 
     const signUp = async(userDetails) => {
-            console.log(userDetails)
+            console.log("userDetaisl:", userDetails)
         try{
             const response = await axios.post("/api/auth/signup", {
                 firstName: userDetails.firstName,
@@ -52,9 +52,9 @@ const AuthProvider = ({children}) =>{
                 email: userDetails.email,
                 password: userDetails.password
             })
-            
+                console.log("response:", response.data)
                 localStorage.setItem("tokenNotesApp", response.data.encodedToken);
-                authDispatch({type: "LOGIN_SUCCESS", payload: {toastMessage: "Signed up", name: response.data.createdUser.firstName, email: response.data.createdUser.email, id:response.data.createdUser._id }})
+                authDispatch({type: "LOGIN_SUCCESS", payload: {toastMessage: "Signed up", name: response.data.createdUser.firstName, email: response.data.createdUser.email, userID:response.data.createdUser._id }})
                   
         }catch(error){
             console.log(error);
@@ -62,8 +62,44 @@ const AuthProvider = ({children}) =>{
         }
 
     }
+
+  
+    const login = async(userDetails) => {
+        try{
+            const response = await axios.post("/api/auth/login", {email: userDetails.email, password: userDetails.password})
+            
+            localStorage.setItem("tokenNotesApp", response.data.encodedToken)
+            authDispatch({type:"LOGIN_SUCCESS", payload:{toastMessage: "Logged In", name: response.data.foundUser.firstName, email: response.data.foundUser.email, userID: response.data.foundUser._id}})
+            
+        }catch(error){
+            console.log(error)
+            authDispatch({type:"HANDLER_ERROR", payload:{toastMessage: "Handler error"}})
+        }
+    }
+
+
+
+    const testlogin = async() => {
+        const userEmail = "testlogin@gmail.com";
+        const userPassword = "test123";
+        try{
+            const response = await axios.post("/api/auth/login", {email: userEmail, password: userPassword})
+            // console.log(response);
+            
+                localStorage.setItem("tokenNotesApp", response.data.encodedToken)
+                authDispatch({type:"LOGIN_SUCCESS", payload:{toastMessage: "Logged In", name: response.data.foundUser.firstName, email: response.data.foundUser.email, userID: response.data.foundUser._id}})
+        }catch(error){
+            console.log(error)
+            authDispatch({type:"HANDLER_ERROR", payload:{toastMessage: "Handler error"}})
+        }
+    }
+
+       const logout = () => {
+        authDispatch({type:"LOGOUT", payload:{toastMessage: "Logged out", name: "", email: "", userID: ""}})
+    }
+
     return (
-        <AuthContext.Provider value={{authState, authDispatch, signUp}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{authState, authDispatch, signUp, login, testlogin, logout}}>{children}</AuthContext.Provider>
     )
 }
 
