@@ -1,42 +1,37 @@
 import "./App.css";
-import logo from "./logo.png";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./Components/Navbar/navbar";
+import Dashboard from "./Pages/Dashboard/dashboard";
+import Login from "./Pages/Authentication/login";
+import Signup from "./Pages/Authentication/signup";
+import Home from "./Pages/Home/home";
+import Archived from "./Pages/Archived/archived";
+import Labels from "./Pages/Labels/labels";
+import Trash from "./Pages/Trash/trash";
+import Mockman from "mockman-js";
+import { RestrictAuth } from "./Components/ReqRisAuth/RestrictAuth";
+
+
 
 function App() {
+
+  const location = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
-    </div>
+    <>
+    {location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/' ? null:<Navbar />}
+    <Routes>
+       <Route path="/" element={<Dashboard />} />
+       <Route element={<RestrictAuth/>}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+       </Route>
+       <Route path='/notes' element={<Home />} />
+       <Route path='/archived' element={<Archived />} />
+       <Route path='/labels' element={<Labels />} />
+       <Route path="/trash" element={<Trash />} />
+       <Route path="/mockman" element={<Mockman />} />
+    </Routes>
+    </>
   );
 }
 
