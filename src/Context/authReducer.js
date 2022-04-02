@@ -19,6 +19,18 @@ export const authReducer = (state, { type, payload }) => {
 
         case "ADD_NOTE":
             return{...state, toastData:{display: true, data:payload.toastMessage, status: "success"}, notes: payload.data}
+
+		case "ARCHIVE_NOTE":
+            return{...state, toastData:{display: true, data:payload.toastMessage, status: "success"}, notes: payload.notesData, archivedNotes: payload.archivedData}
+
+		case "GET_ARCHIVED_NOTES":
+            return{...state, toastData:{...state.toastData, display: false}, archivedNotes: payload.archivedData}	
+
+			case "DELETE_FROM_ARCHIVE":
+            return{...state, toastData:{display: true, data:payload.toastMessage, status: "alert"}, archivedNotes: payload.data}
+        
+        case "RESTORE_FROM_ARCHIVE":
+            return{...state, toastData:{display: true, data:payload.toastMessage, status: "success"}, notes: payload.notesData, archivedNotes: payload.archivedData}
 		default:
 			return { ...state }
 	}

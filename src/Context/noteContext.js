@@ -42,8 +42,24 @@ const NoteProvider = ({children}) =>{
             console.log(error)
         }      
     }
+
+    const archiveNote = async(_id, note) => {
+        console.log(_id, note)
+        try {
+            const response = await axios.post(
+                `/api/notes/archives/${_id}`,
+                { note: note},
+                config
+            )
+            if(response.status === 201) {
+                authDispatch({type: "ARCHIVE_NOTE", payload:{toastMessage: "Note Archived", notesData: response.data.notes, archivedData: response.data.archives}})
+            }
+        }catch(error) {
+            console.log(error)
+        }
+    }
     return (
-        <NoteContext.Provider value={{getNotes, addNote}}>{children}</NoteContext.Provider>
+        <NoteContext.Provider value={{getNotes, addNote, archiveNote}}>{children}</NoteContext.Provider>
     )
 }
 
