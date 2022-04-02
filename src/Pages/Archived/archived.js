@@ -14,7 +14,9 @@ const Archived = () => {
   return (
     <>
     <Sidebar />
-    {archivedNotes.map((note)=>{
+    {archivedNotes.length === 0 ? <h1 style={{marginTop: '-35rem', marginLeft: '40rem'}}>No Archived</h1>
+      :
+      archivedNotes.map((note)=>{
       return (
          <div className='archived-container' style={{marginTop: '-46.5rem', marginBottom: '40rem'}}>
         <div className="display-card pd-1" style={{backgroundColor: note.selectedBackgroundColor}} key={note._id}>
@@ -33,6 +35,8 @@ const Archived = () => {
     </div>
       )
     })}
+    
+    
     </>
   )
 }

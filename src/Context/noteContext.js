@@ -58,8 +58,22 @@ const NoteProvider = ({children}) =>{
             console.log(error)
         }
     }
+
+     const deleteNote = async(_id) => {
+        try {
+            const response = await axios.delete(
+                `/api/notes/${_id}`,
+                config
+            )
+            if(response.status === 200) {
+                authDispatch({type: "DELETE_NOTE", payload:{toastMessage: "Note Deleted", data: response.data.notes}})
+            }
+        }catch(error) {
+            console.log(error)
+        }     
+    }
     return (
-        <NoteContext.Provider value={{getNotes, addNote, archiveNote}}>{children}</NoteContext.Provider>
+        <NoteContext.Provider value={{getNotes, addNote, archiveNote, deleteNote}}>{children}</NoteContext.Provider>
     )
 }
 
