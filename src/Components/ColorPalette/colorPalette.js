@@ -16,7 +16,7 @@ const colorsInArray = [
   "#238AC5",
 ];
 
-export const ColorPalette = () => {
+export const ColorPalette = ({setInputCardDetails, inputCardDetails}) => {
   const [isHidden, setHidden] = useState(true);
   return (
     <>
@@ -43,6 +43,7 @@ export const ColorPalette = () => {
                 style={{
                   backgroundColor: color,
                 }}
+                onClick={() => {setInputCardDetails({...inputCardDetails, selectedBackgroundColor: color})}}
               ></div>
             );
           })}
