@@ -6,6 +6,7 @@ import { ColorPalette } from '../../Components/ColorPalette/colorPalette'
 import { useNotes } from '../../Context/noteContext'
 import { useAuth } from '../../Context/authContext'
 import NewNote from '../../Components/NewNote/newNote'
+import { EditCard } from '../../Components/EditNote/editNote'
 
 const Home = () => {
 
@@ -21,6 +22,20 @@ const [inputCardDetails, setInputCardDetails] = useState({
 
   const {authState} = useAuth();
   const {notes} = authState;
+
+
+	const [edit, setEdit] = useState({
+		isEdit: false,
+		editItem: {
+			_id: null,
+			pinned: false,
+			title: "",
+			description: "",
+			tag: "Tag",
+			priority: "Priority",
+			selectedBackgroundColor: "#faf8f8",
+		}
+	});
   
   return (
     <>
@@ -127,10 +142,13 @@ const [inputCardDetails, setInputCardDetails] = useState({
           {notes
             .map((note) => {
               return (
-                <NewNote note={note}/>
+                <NewNote note={note} edit={edit} setEdit={setEdit} />
               );
             })}
         </div>
+
+        
+        {edit.isEdit && <EditCard edit={edit} setEdit={setEdit} />}
       </div>
       </div>
        )

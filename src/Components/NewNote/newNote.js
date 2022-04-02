@@ -2,7 +2,7 @@ import React from 'react'
 import { useNotes } from '../../Context/noteContext'
 import './newNote.css'
 
-const NewNote = ({note}) => {
+const NewNote = ({note, edit, setEdit}) => {
     const {archiveNote, deleteNote} = useNotes();
   return (
     <>
@@ -17,7 +17,23 @@ const NewNote = ({note}) => {
                 <div className="tag">{note.tag}</div>
                 <div className="priority">{note.priority}</div>
 
-                <button className="btn-transparent" style={{display: 'flex',justifyContent: 'center', alignItems: 'center'}}><span className="material-icons-outlined btn-edit">edit</span></button>
+                <button className="btn-transparent" style={{display: 'flex',justifyContent: 'center', alignItems: 'center'}} onClick={() => {
+					        console.log('hello')
+                  setEdit({
+							...edit,
+							isEdit: true,
+							editItem: {
+								...edit.editItem,
+								_id: note._id,
+								pinned: note.pinned,
+								title: note.title,
+								description: note.description,
+								tag: note.tag,
+								priority: note.priority,
+								selectedBackgroundColor: note.selectedBackgroundColor,
+							},
+						});
+					}}><span className="material-icons-outlined btn-edit" >edit</span></button>
     
                 <button className="btn-transparent" onClick={() => {archiveNote(note._id, note)}}><span className="material-icons-outlined btn-archive">archive</span></button>
                 <button className="btn-transparent" onClick={() => {deleteNote(note._id)}}><span className="material-icons-outlined btn-delete">delete</span></button>

@@ -73,9 +73,27 @@ const NoteProvider = ({children}) =>{
         }     
     }
 
-    
+    const updateNote = async (_id, note) => {
+		// console.log(_id, note);
+		console.log("updated");
+		try {
+			const response = await axios.post(
+				`/api/notes/${_id}`,
+				{ note: note },
+				config
+			);
+			if (response.status === 201) {
+				authDispatch({
+					type: "UPDATE_NOTE",
+					payload: { toastMessage: "Note Updated", data: response.data.notes },
+				});
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
     return (
-        <NoteContext.Provider value={{getNotes, addNote, archiveNote, deleteNote}}>{children}</NoteContext.Provider>
+        <NoteContext.Provider value={{getNotes, addNote, archiveNote, deleteNote, updateNote}}>{children}</NoteContext.Provider>
     )
 }
 
