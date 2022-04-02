@@ -28,7 +28,8 @@
 }
 
 .btn-archive,
-.btn-delete {
+.btn-delete,
+.btn-edit {
     color: var(--text-color2);
 }
 
@@ -71,4 +72,9 @@
 
 .pd-1 {
     padding: 1rem;
+}
+
+.edit-btn{
+    padding: 0.25rem 0.75rem;
+    border-radius: 10%;
 }
