@@ -1,9 +1,13 @@
 import React from 'react'
 import './trash.css'
 
+
 const Trash = () => {
+
   return (
-    <div>Trash</div>
+    <section>
+      <h1>Trashed Items</h1>
+    </section>
   )
 }
 
