@@ -8,6 +8,7 @@ import { AuthProvider } from "./Context/authContext";
 import { NoteProvider } from "./Context/noteContext";
 import { ArchiveProvider } from "./Context/archivedContext";
 
+
 // Call make Server
 makeServer();
 
@@ -19,6 +20,7 @@ ReactDOM.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>
+
   </ArchiveProvider>
   </NoteProvider>
   </AuthProvider>

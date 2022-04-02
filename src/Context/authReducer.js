@@ -34,6 +34,7 @@ export const authReducer = (state, { type, payload }) => {
         
         case "RESTORE_FROM_ARCHIVE":
             return{...state, toastData:{display: true, data:payload.toastMessage, status: "success"}, notes: payload.notesData, archivedNotes: payload.archivedData}
+
 		default:
 			return { ...state }
 	}

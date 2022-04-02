@@ -72,6 +72,8 @@ const NoteProvider = ({children}) =>{
             console.log(error)
         }     
     }
+
+    
     return (
         <NoteContext.Provider value={{getNotes, addNote, archiveNote, deleteNote}}>{children}</NoteContext.Provider>
     )
