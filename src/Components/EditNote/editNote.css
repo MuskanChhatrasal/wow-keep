@@ -1,7 +1,7 @@
 .modal-edit {
     position: fixed;
-    inset: 10rem 20rem;
-    backdrop-filter: blur(15px);
+    inset: -2rem 2rem;
+    backdrop-filter: blur(2.5px);
 }
 
 .container-edit-note {

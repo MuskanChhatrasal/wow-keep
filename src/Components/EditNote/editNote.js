@@ -55,15 +55,20 @@ export const EditCard = ({ edit, setEdit }) => {
 					</div>
 					<div>
 
-						<span className="pin-icon" onClick={() => {
+						{/* <span className="pin-icon" onClick={() => {
 							setEditCardDetails({
 								...editCardDetails,
 								pinned: !editCardDetails.pinned,
 							})
 						}}>
 							<i class="fa-solid fa-thumbtack"></i>
-						</span>
-
+						</span> */}
+                      <button className="btn-transparent btn-pinned" onClick={() => {
+							setEditCardDetails({
+								...editCardDetails,
+								pinned: !editCardDetails.pinned,
+							})
+						}}><span  className={`${editCardDetails.pinned ? "note-active" : ""} material-icons btn-color`}>push_pin</span></button>
 
 
 					</div>

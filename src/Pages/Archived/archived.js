@@ -14,12 +14,13 @@ const Archived = () => {
   return (
     <>
     <Sidebar />
+    <div className='archived-main-container'>
     {archivedNotes.length === 0 ? <h1 style={{marginTop: '-35rem', marginLeft: '40rem'}}>No Archived</h1>
       :
       archivedNotes.map((note)=>{
       return (
          <div className='archived-container' style={{marginTop: '-46.5rem', marginBottom: '40rem'}}>
-        <div className="display-card pd-1" style={{backgroundColor: note.selectedBackgroundColor}} key={note._id}>
+        <div className="archived-display-card pd-1" style={{backgroundColor: note.selectedBackgroundColor}} key={note._id}>
             <div className="container-input-text pdb-1">
                 <h5 className="pdb-1">{note.title}</h5>
                 <p className="pdb-1 text-display-card text-base">{note.description}</p>
@@ -35,6 +36,7 @@ const Archived = () => {
     </div>
       )
     })}
+    </div>
     
     
     </>

@@ -44,7 +44,7 @@ const [inputCardDetails, setInputCardDetails] = useState({
 
      <div style={{display: 'flex', flexDirection: 'column'}}>
      <div
-      style={{ backgroundColor: 'white', width: '38rem'}}
+      style={{ backgroundColor: 'white', width: '40rem', height: '15rem'}}
       className="input-container cont-shadow"
     >
       <div>
