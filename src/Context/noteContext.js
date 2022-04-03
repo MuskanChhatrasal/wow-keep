@@ -65,20 +65,6 @@ const NoteProvider = ({ children }) => {
     }
   };
 
-  //  const deleteNote = async(_id) => {
-  //     try {
-  //         const response = await axios.delete(
-  //             `/api/notes/${_id}`,
-  //             config
-  //         )
-  //         if(response.status === 200) {
-  //             authDispatch({type: "DELETE_NOTE", payload:{toastMessage: "Note Deleted", data: response.data.notes}})
-  //         }
-  //     }catch(error) {
-  //         console.log(error)
-  //     }
-  // }
-
   const deleteNote = async (_id, note) => {
     try {
       const response = await axios.delete(`/api/notes/${_id}`, config);

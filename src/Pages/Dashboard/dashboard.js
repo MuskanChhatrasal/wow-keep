@@ -12,12 +12,9 @@ const Dashboard = () => {
           foundational and advanced components, enabling you to build your own
           design system and develop your applications faster.
         </p>
-        {/* <div style={{display: 'flex',gap: '2rem'}}> */}
-        {/* <Link to='/signup'><a className="button btn-primary">SignUp</a></Link> */}
         <Link to="/signup">
           <a className="button btn-primary">Get Started</a>
         </Link>
-        {/* </div> */}
         <Link to="/login">
           <h4 style={{ marginTop: "1.5rem", cursor: "pointer" }}>
             Already have an account ??

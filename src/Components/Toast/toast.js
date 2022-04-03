@@ -1,9 +1,7 @@
-
 import "./toast.css";
 
 import { useEffect } from "react";
 import { useAuth } from "../../Context/authContext";
-// import { useAuth } from "../../Context";
 
 export const Toast = () => {
   const {

@@ -3,11 +3,6 @@ import "./sidebar.css";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  //   const [notesPriority, setNotesPriority] = useState(false)
-  //   const [labelType, setLabelType] = useState(false)
-
-  //   const location = useLocation();
-
   return (
     <nav className="sidebar" style={{ marginTop: "3rem" }}>
       <div>
