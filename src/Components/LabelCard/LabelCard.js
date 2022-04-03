@@ -1,4 +1,3 @@
-
 import "../NewNote/newNote.css";
 
 export const LabelCard = ({ item }) => {
@@ -8,14 +7,18 @@ export const LabelCard = ({ item }) => {
     <>
       <div
         className="display-card pd-1"
-        style={{ backgroundColor: selectedBackgroundColor, display: 'flex', flexDirection: 'column' }}
+        style={{
+          backgroundColor: selectedBackgroundColor,
+          display: "flex",
+          flexDirection: "column",
+        }}
         key={_id}
       >
         <div className="container-input-text pdb-1">
           <h5 className="pdb-1">{title}</h5>
           <p className="pdb-1 text-display-card text-base">{description}</p>
         </div>
-        <div className="edit-section flex flex-gap-2">
+        <div className="edit-section" style={{ display: "flex", gap: "2rem" }}>
           <div className="tag flex flex-align-center">{tag}</div>
           <div className="priority flex flex-align-center">{priority}</div>
         </div>
