@@ -21,7 +21,7 @@ export const authReducer = (state, { type, payload }) => {
             return{...state, toastData:{display: true, data:payload.toastMessage, status: "success"}, notes: payload.data}
 
 		case "DELETE_NOTE":
-            return{...state, toastData:{display: true, data:payload.toastMessage, status: "alert"}, notes: payload.data}
+            return {...state, toastData: {display: true, data: payload.toastMessage, status: "alert",}, notes: payload.data,};
 
 		case "ARCHIVE_NOTE":
             return{...state, toastData:{display: true, data:payload.toastMessage, status: "success"}, notes: payload.notesData, archivedNotes: payload.archivedData}
@@ -37,6 +37,16 @@ export const authReducer = (state, { type, payload }) => {
 
 		case "UPDATE_NOTE":
 			return {...state, toastData: {display: true, data: payload.toastMessage, status: "success",}, notes: payload.data};
+
+
+		case "MOVE_TO_TRASH":
+           return {...state, trashedNotes: payload.data}
+
+        case "RESTORE_FROM_TRASH":
+           return {...state, toastData: {display: true, data: payload.toastMessage, status: "success",}, notes: payload.notesData, trashedNotes: payload.trashData}
+
+        case "DELETE_FROM_TRASH":
+           return {...state,  toastData: {display: true, data: payload.toastMessage, status: "alert",}, trashedNotes: payload.data}
 		default:
 			return { ...state }
 	}

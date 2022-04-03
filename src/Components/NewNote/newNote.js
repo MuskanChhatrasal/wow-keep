@@ -36,7 +36,7 @@ const NewNote = ({note, edit, setEdit}) => {
 					}}><span className="material-icons-outlined btn-edit" >edit</span></button>
     
                 <button className="btn-transparent" onClick={() => {archiveNote(note._id, note)}}><span className="material-icons-outlined btn-archive">archive</span></button>
-                <button className="btn-transparent" onClick={() => {deleteNote(note._id)}}><span className="material-icons-outlined btn-delete">delete</span></button>
+                <button className="btn-transparent" onClick={() => {deleteNote(note._id,note)}}><span className="material-icons-outlined btn-delete">delete</span></button>
                         
             </div>
         </div>

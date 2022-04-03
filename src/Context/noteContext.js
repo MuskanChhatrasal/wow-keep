@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { useAuth } from "./authContext";
 import axios from "axios";
+// import { useTrash } from "./TrashContext";
 
 
 const NoteContext = createContext();
@@ -8,6 +9,7 @@ const NoteContext = createContext();
 const NoteProvider = ({children}) =>{
     
     const {authDispatch} = useAuth();
+    // const {addToTrash} = useTrash();
      const config = {
        headers: {
            authorization: localStorage.getItem("tokenNotesApp")
@@ -72,6 +74,21 @@ const NoteProvider = ({children}) =>{
             console.log(error)
         }     
     }
+
+//      const deleteNote = async (_id, note) => {
+//        try {
+//           const response = await axios.delete(`/api/notes/${_id}`, config);
+//           if (response.status === 200) {
+//            addToTrash(note)
+//            authDispatch({
+//              type: "DELETE_NOTE",
+//              payload: { toastMessage: "Note moved to trash", data: response.data.notes },
+//           });
+//         }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
     const updateNote = async (_id, note) => {
 		// console.log(_id, note);

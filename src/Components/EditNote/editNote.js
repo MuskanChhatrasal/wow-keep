@@ -87,9 +87,6 @@ export const EditCard = ({ edit, setEdit }) => {
 							<option value="Home">Home</option>
 							<option value="Work">Work</option>
 							<option value="Personal">Personal</option>
-							<option value="Exercise">Exercise</option>
-							<option value="Chores">Chores</option>
-							<option value="Health">Health</option>
 						</select>
 						<select
 							onChange={(e) => {
