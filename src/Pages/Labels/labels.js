@@ -1,32 +1,11 @@
-// import React from 'react'
-// import Sidebar from '../../Components/Sidebar/sidebar'
-// import './labels.css'
-
-// const Labels = () => {
-//   return (
-//     <div className='label-container'>
-//         <Sidebar />
-//         <h1>Label</h1>
-//     </div>
-//   )
-// }
-
-// export default Labels
-
 import "./labels.css";
 import { useEffect, useState } from "react";
 import { useNotes } from "../../Context/noteContext";
 import { useAuth } from "../../Context/authContext";
 import Sidebar from "../../Components/Sidebar/sidebar";
 import { LabelCard } from "../../Components/LabelCard/LabelCard";
-// import { Sidebar, LabelCard, DisplayCardEmpty } from "../../Components";
-// import { useNotes, useAuth } from "../../Context";
-// import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 const Labels = () => {
-  // useDocumentTitle();
-  // useScrollToTop();
-
   const { getNotes } = useNotes();
   const { authState } = useAuth();
   const { notes } = authState;
