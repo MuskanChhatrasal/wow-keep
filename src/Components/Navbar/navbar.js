@@ -2,6 +2,7 @@ import React from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
 import {useAuth} from '../../Context/authContext'
+import { Toast } from '../Toast/toast'
 
 const Navbar = () => {
 
@@ -33,6 +34,7 @@ const Navbar = () => {
                 </button>
             </li>
         </ul>
+        <Toast />
     </header>
   )
 }

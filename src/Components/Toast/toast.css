@@ -1,0 +1,25 @@
+.snackbar-container {
+    position: fixed;
+    margin: 3rem;
+    width: 12rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    z-index: 3;
+    top: 2rem;
+    right: 0;
+    color: var(--text-white);
+    padding: 1rem 1rem;
+    align-items: center;
+}
+
+.display-none {
+    display: none;
+}
+
+.success {
+    background-color: var(--success-bg);
+}
+
+.alert {
+    background-color: var(--error-bg);
+}
