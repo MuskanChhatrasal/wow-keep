@@ -54,7 +54,8 @@ textarea::-webkit-input-placeholder {
 
 .input-text-section-container .title-text-style {
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-top: 2rem;
 }
 
 .input-text-section {
@@ -69,9 +70,9 @@ textarea::-webkit-input-placeholder {
   font-weight: 500;
 }
 
-.active {
+/* .active {
   color: var(--primary-color);
-}
+} */
 
 .edit-section select {
   margin-left: 1rem;
@@ -114,7 +115,14 @@ textarea::-webkit-input-placeholder {
 .add-btn {
   font-size: 1.5rem !important;
 }
-
+.btn-pinned {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.active {
+  color: var(--primary-dark-color);
+}
 .other{
   margin-bottom: 10rem;
   display: flex;

@@ -46,8 +46,9 @@ const Home = () => {
               backgroundColor: "white",
               width: "40rem",
               height: "15rem",
+              boxShadow: "0px 3px 5px 2px rgba(0,0,0,0.31)",
             }}
-            className="input-container cont-shadow"
+            className="input-container"
           >
             <div>
               <div className="input-text-section-container">

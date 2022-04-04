@@ -17,7 +17,7 @@ const NewNote = ({ note, edit, setEdit }) => {
         <button className="btn-transparent btn-pinned">
           <span
             className={`${
-              note.pinned ? "note-active" : ""
+              note.pinned ? "active" : ""
             } material-icons btn-color`}
           >
             push_pin
