@@ -165,7 +165,9 @@ const Labels = () => {
             <div className="label-card-container">
               {filteredNotes.length !== 0 ? (
                 filteredNotes.map((item) => {
-                  return <LabelCard item={item} key={item._id} />;
+                  {
+                    return <LabelCard item={item} key={item._id} />;
+                  }
                 })
               ) : (
                 <h1 style={{ marginTop: "-35rem", marginLeft: "40rem" }}>
