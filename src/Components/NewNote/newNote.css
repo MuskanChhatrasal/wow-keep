@@ -1,14 +1,17 @@
 .display-card {
     height: fit-content;
-    width: 30rem;
+    width: 25rem;
     position: relative;
     border: transparent;
     border-radius: 0.5rem;
-    margin-top: 12rem;
-    margin-left: 15rem;
+    margin-top: 10rem;
+    margin-left: 8rem;
 }
 .pdb-1{
     padding-bottom: 1rem;
+}
+.new-note-container{
+    display: flex !important;
 }
 .btn-transparent {
     background: transparent;
@@ -60,10 +63,6 @@
     background-color: var(--white);
     border: 1px solid var(--footer-background);
     padding: 0.3rem 0.5rem;
-}
-
-.note-active {
-    color: var(--primary-color);
 }
 
 .text-base {

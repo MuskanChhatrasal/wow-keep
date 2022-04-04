@@ -16,7 +16,7 @@ const colorsInArray = [
   "#238AC5",
 ];
 
-export const ColorPalette = ({setInputCardDetails, inputCardDetails}) => {
+export const ColorPalette = ({ setInputCardDetails, inputCardDetails }) => {
   const [isHidden, setHidden] = useState(true);
   return (
     <>
@@ -29,11 +29,11 @@ export const ColorPalette = ({setInputCardDetails, inputCardDetails}) => {
         }}
         className="palette"
       >
-        <i className="fas fa-palette" style={{fontSize: '1.5rem'}}></i>
+        <i className="fas fa-palette" style={{ fontSize: "1.5rem" }}></i>
 
         <div
           className="colorPaletteContainer boxShadow"
-            style={{ display: isHidden ? "none" : "flex" }}
+          style={{ display: isHidden ? "none" : "flex" }}
         >
           {colorsInArray.map((color) => {
             return (
@@ -43,7 +43,12 @@ export const ColorPalette = ({setInputCardDetails, inputCardDetails}) => {
                 style={{
                   backgroundColor: color,
                 }}
-                onClick={() => {setInputCardDetails({...inputCardDetails, selectedBackgroundColor: color})}}
+                onClick={() => {
+                  setInputCardDetails({
+                    ...inputCardDetails,
+                    selectedBackgroundColor: color,
+                  });
+                }}
               ></div>
             );
           })}

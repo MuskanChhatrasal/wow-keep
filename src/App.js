@@ -10,6 +10,7 @@ import Labels from "./Pages/Labels/labels";
 import Trash from "./Pages/Trash/trash";
 import Mockman from "mockman-js";
 import { RestrictAuth } from "./Components/ReqRisAuth/RestrictAuth";
+import RequireAuth from "./Components/ReqRisAuth/RequireAuth";
 
 
 
@@ -25,11 +26,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
        </Route>
-       <Route path='/notes' element={<Home />} />
-       <Route path='/archived' element={<Archived />} />
-       <Route path='/labels' element={<Labels />} />
-       <Route path="/trash" element={<Trash />} />
-       <Route path="/mockman" element={<Mockman />} />
+       <Route element={<RequireAuth />} >
+          <Route path='/notes' element={<Home />} />
+          <Route path='/archived' element={<Archived />} />
+          <Route path='/labels' element={<Labels />} />
+          <Route path="/trash" element={<Trash />} />
+       </Route>
+       {/* <Route path="/mockman" element={<Mockman />} /> */}
     </Routes>
     </>
   );
