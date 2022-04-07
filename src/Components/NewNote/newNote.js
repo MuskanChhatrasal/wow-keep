@@ -24,6 +24,12 @@ const NewNote = ({ note, edit, setEdit }) => {
           </span>
         </button>
         <div className="container-input-text pdb-1">
+          <h6 className="dateOnCard">
+            Created At:
+            {new Date(parseInt(note.createdDate)).toLocaleString(undefined, {
+              timeZone: "Asia/Kolkata",
+            })}
+          </h6>
           <h5 className="pdb-1">{note.title}</h5>
           <p className="pdb-1 text-display-card text-base">
             {note.description}

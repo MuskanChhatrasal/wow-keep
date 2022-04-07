@@ -129,3 +129,12 @@ textarea::-webkit-input-placeholder {
   flex-wrap: wrap;
 }
 
+.filterByContainer{
+  position: absolute;
+  right: 5rem;
+  top: 12rem;
+  border: 2px solid var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+

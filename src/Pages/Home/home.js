@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/sidebar";
@@ -10,6 +10,7 @@ import { EditCard } from "../../Components/EditNote/editNote";
 
 const Home = () => {
   const { addNote } = useNotes();
+
   const [inputCardDetails, setInputCardDetails] = useState({
     pinned: false,
     title: "",
@@ -17,10 +18,33 @@ const Home = () => {
     tag: "Tag",
     priority: "Priority",
     selectedBackgroundColor: "#faf8f8",
+    createdDate: null,
   });
 
   const { authState } = useAuth();
   const { notes } = authState;
+
+  const [filteredNotes, setFilteredNotes] = useState([notes]);
+  const [labels, setLabels] = useState({
+    LowToHigh: false,
+    HighToLow: false,
+    oldest: false,
+    newest: false,
+  });
+
+  useEffect(() => {
+    (function () {
+      let newData = [...notes];
+
+      if (labels.oldest) {
+        newData.sort((a, b) => a.createdDate - b.createdDate);
+      }
+      if (labels.newest) {
+        newData.sort((a, b) => b.createdDate - a.createdDate);
+      }
+      setFilteredNotes(newData);
+    })();
+  }, [notes, labels]);
 
   const [edit, setEdit] = useState({
     isEdit: false,
@@ -43,7 +67,7 @@ const Home = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              backgroundColor: "white",
+              backgroundColor: `${inputCardDetails.selectedBackgroundColor}`,
               width: "40rem",
               height: "15rem",
               boxShadow: "0px 3px 5px 2px rgba(0,0,0,0.31)",
@@ -154,8 +178,13 @@ const Home = () => {
                 <button
                   className="add-btn"
                   onClick={() => {
+                    setInputCardDetails({
+                      ...inputCardDetails,
+                      timeOfCreation: new Date().getTime(),
+                    });
                     addNote({
                       ...inputCardDetails,
+                      createdDate: new Date().getTime().toString(),
                       tag:
                         inputCardDetails.tag === "Tag"
                           ? "Home"
@@ -180,8 +209,34 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className="filterByContainer">
+            <label style={{ fontSize: "1.8rem" }}>Sort By Date: </label>
+            <br />
+            <label>
+              <input
+                type="radio"
+                name="group2"
+                onClick={() =>
+                  setLabels({ ...labels, oldest: true, newest: false })
+                }
+              />
+              <span>Oldest</span>
+            </label>
+            <br />
+            <label>
+              <input
+                type="radio"
+                name="group2"
+                onClick={() =>
+                  setLabels({ ...labels, oldest: false, newest: true })
+                }
+              />
+              <span>Newest</span>
+            </label>
+          </div>
           <div className="other">
-            {notes.map((note) => {
+            {filteredNotes.map((note) => {
+              console.log("notes:", filteredNotes);
               return <NewNote note={note} edit={edit} setEdit={setEdit} />;
             })}
           </div>
