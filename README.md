@@ -25,4 +25,4 @@ React.js : v18.0.0
 React router: v6.2.2
 Axios : v0.26.1
 Mirage js : v0.1.43
-SimpleUI Component library (developed by me): https://wow-ui02.netlify.app/
+WowUI Component library (developed by me): https://wow-ui02.netlify.app/
